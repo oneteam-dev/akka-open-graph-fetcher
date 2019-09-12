@@ -5,6 +5,7 @@ import java.net.{URI, URISyntaxException}
 import akka.actor.{ActorSystem, Scheduler}
 import akka.http.scaladsl.model._
 import akka.http.scaladsl.model.headers.Location
+import akka.http.scaladsl.settings.ConnectionPoolSettings
 import akka.http.scaladsl.{Http, HttpExt}
 import akka.pattern.after
 import akka.stream.ActorMaterializer
@@ -37,7 +38,7 @@ class OpenGraphFetcher(
     * @return
     */
   def fetch(
-    url: String, headers: Iterable[HttpHeader] = Nil
+    url: String, headers: Iterable[HttpHeader] = Nil, settings: Option[ConnectionPoolSettings] = None
   )(implicit ec: ExecutionContext): Future[OpenGraph] =
     if (!urlPattern.pattern.matcher(url).matches()) {
       Future.successful(
@@ -47,7 +48,7 @@ class OpenGraphFetcher(
       try {
         val asciiUrl = new URI(url).toASCIIString
         val request = HttpRequest(uri = Uri(asciiUrl), headers = scala.collection.immutable.Seq(headers.toSeq:_*))
-        (fetchSuccess(request) recover recoverFailure(url)) (ec)
+        (fetchSuccess(request, settings) recover recoverFailure(url)) (ec)
       } catch {
         case e: URISyntaxException =>
           Future.successful(
@@ -56,25 +57,29 @@ class OpenGraphFetcher(
       }
     }
 
-  private def fetchSuccess(request: HttpRequest)(implicit ec: ExecutionContext): Future[OpenGraph] =
+  private def fetchSuccess(request: HttpRequest, settings: Option[ConnectionPoolSettings])(implicit ec: ExecutionContext): Future[OpenGraph] =
     for {
       response <- Future.firstCompletedOf(
-        handleRequestWithRedirect(request, Set(request.uri)) ::
+        handleRequestWithRedirect(request, settings, Set(request.uri)) ::
         requestTimeout(request) ::
         Nil
       )
       openGraph <- openGraphParser.parse(request, response)
     } yield openGraph
 
-  private def handleRequestWithRedirect(request: HttpRequest, triedUris: Set[Uri])(implicit ec: ExecutionContext): Future[HttpResponse] =
+  private def handleRequestWithRedirect(request: HttpRequest, settings: Option[ConnectionPoolSettings], triedUris: Set[Uri])(implicit ec: ExecutionContext): Future[HttpResponse] =
     for {
-      response <- httpExt.singleRequest(request)
+      response <- if (settings.isDefined) {
+        httpExt.singleRequest(request, settings = settings.get)
+      } else {
+        httpExt.singleRequest(request)
+      }
       response <- if (triedUris.size < maxRedirectionRetries && response.status.isRedirection()) {
         response.header[Location]
           .map(_.uri)
           .filterNot(triedUris.contains)
           .map(uri => request.copy(uri = uri))
-          .map(redirectRequest => handleRequestWithRedirect(redirectRequest, triedUris + redirectRequest.uri))
+          .map(redirectRequest => handleRequestWithRedirect(redirectRequest, settings, triedUris + redirectRequest.uri))
           .getOrElse(Future.successful(response))
       } else {
         Future.successful(response)
