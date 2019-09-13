@@ -1,4 +1,4 @@
-organization := "com.github.tkqubo"
+organization := "com.github.tyru"
 
 name := "akka-open-graph-fetcher"
 
@@ -11,14 +11,14 @@ javaOptions in Test ++= Seq(
   s"-Djava.util.Arrays.useLegacyMergeSort=true"
 )
 
-initialCommands := "import com.github.tkqubo.akka_open_graph_fetcher._"
+initialCommands := "import com.github.tyru.akka_open_graph_fetcher._"
 
 // sbt publish
 publishArtifact in Test := false
 publishMavenStyle := true
 pomIncludeRepository := { _ => false }
 pomExtra := (
-  <url>https://github.com/tkqubo/akka-open-graph-fetcher</url>
+  <url>https://github.com/tyru/akka-open-graph-fetcher</url>
     <licenses>
       <license>
         <name>MIT</name>
@@ -26,15 +26,15 @@ pomExtra := (
       </license>
     </licenses>
     <scm>
-      <url>git@github.com:tkqubo/akka-open-graph-fetcher.git</url>
-      <connection>scm:git:github.com/tkqubo/akka-open-graph-fetcher.git</connection>
-      <developerConnection>scm:git:git@github.com:tkqubo/akka-open-graph-fetcher.git</developerConnection>
+      <url>git@github.com:tyru/akka-open-graph-fetcher.git</url>
+      <connection>scm:git:github.com/tyru/akka-open-graph-fetcher.git</connection>
+      <developerConnection>scm:git:git@github.com:tyru/akka-open-graph-fetcher.git</developerConnection>
     </scm>
     <developers>
       <developer>
-        <id>tkqubo</id>
+        <id>tyru</id>
         <name>Takaichi Kubo</name>
-        <url>https://github.com/tkqubo</url>
+        <url>https://github.com/tyru</url>
       </developer>
     </developers>
   )
@@ -56,4 +56,4 @@ releasePublishArtifactsAction := PgpKeys.publishSigned.value
 site.settings
 site.includeScaladoc()
 ghpages.settings
-git.remoteRepo := "git@github.com:tkqubo/akka-open-graph-fetcher.git"
+git.remoteRepo := "git@github.com:tyru/akka-open-graph-fetcher.git"

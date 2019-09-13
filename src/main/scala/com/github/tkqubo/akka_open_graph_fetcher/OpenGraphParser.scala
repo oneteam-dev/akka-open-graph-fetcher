@@ -1,4 +1,4 @@
-package com.github.tkqubo.akka_open_graph_fetcher
+package com.github.tyru.akka_open_graph_fetcher
 
 import java.nio.charset.Charset
 import java.util
