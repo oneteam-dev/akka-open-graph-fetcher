@@ -18,7 +18,7 @@ publishArtifact in Test := false
 publishMavenStyle := true
 pomIncludeRepository := { _ => false }
 pomExtra := (
-  <url>https://github.com/tyru/akka-open-graph-fetcher</url>
+  <url>https://github.com/oneteam-dev/akka-open-graph-fetcher</url>
     <licenses>
       <license>
         <name>MIT</name>
@@ -26,15 +26,15 @@ pomExtra := (
       </license>
     </licenses>
     <scm>
-      <url>git@github.com:tyru/akka-open-graph-fetcher.git</url>
-      <connection>scm:git:github.com/tyru/akka-open-graph-fetcher.git</connection>
-      <developerConnection>scm:git:git@github.com:tyru/akka-open-graph-fetcher.git</developerConnection>
+      <url>git@github.com:oneteam-dev/akka-open-graph-fetcher.git</url>
+      <connection>scm:git:github.com/oneteam-dev/akka-open-graph-fetcher.git</connection>
+      <developerConnection>scm:git:git@github.com:oneteam-dev/akka-open-graph-fetcher.git</developerConnection>
     </scm>
     <developers>
       <developer>
-        <id>tyru</id>
-        <name>Takaichi Kubo</name>
-        <url>https://github.com/tyru</url>
+        <id>oneteam-dev</id>
+        <name>Oneteam Dev</name>
+        <url>https://github.com/oneteam-dev</url>
       </developer>
     </developers>
   )
@@ -56,4 +56,4 @@ releasePublishArtifactsAction := PgpKeys.publishSigned.value
 site.settings
 site.includeScaladoc()
 ghpages.settings
-git.remoteRepo := "git@github.com:tyru/akka-open-graph-fetcher.git"
+git.remoteRepo := "git@github.com:oneteam-dev/akka-open-graph-fetcher.git"

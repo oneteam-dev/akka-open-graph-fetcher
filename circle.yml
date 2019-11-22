@@ -27,6 +27,6 @@ deployment:
     commands:
       - sbt doc
       - sbt coverageReport
-      - git config --global user.email "tk.qubo@gmail.com"
-      - git config --global user.name "tyru"
+      - git config --global user.email "oneteam-dev@teamwork.motivation-cloudapp.com"
+      - git config --global user.name "oneteam-dev"
       - sbt ghpages-push-site
