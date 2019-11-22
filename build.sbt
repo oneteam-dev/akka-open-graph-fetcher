@@ -1,4 +1,4 @@
-organization := "com.github.tyru"
+organization := "com.github.oneteam_dev"
 
 name := "akka-open-graph-fetcher"
 
@@ -11,7 +11,7 @@ javaOptions in Test ++= Seq(
   s"-Djava.util.Arrays.useLegacyMergeSort=true"
 )
 
-initialCommands := "import com.github.tyru.akka_open_graph_fetcher._"
+initialCommands := "import com.github.oneteam_dev.akka_open_graph_fetcher._"
 
 // sbt publish
 publishArtifact in Test := false

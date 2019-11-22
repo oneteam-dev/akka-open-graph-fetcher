@@ -1,4 +1,4 @@
-package com.github.tyru.akka_open_graph_fetcher
+package com.github.oneteam_dev.akka_open_graph_fetcher
 
 import akka.http.scaladsl.model.StatusCodes
 import akka.http.scaladsl.model.StatusCodes.ClientError
@@ -11,7 +11,7 @@ import scala.concurrent.TimeoutException
 /**
   * Test class for [[Error]]
   * {{{
-  * sbt "test-only com.github.tyru.akka_http_og_fetcher.ErrorTest"
+  * sbt "test-only com.github.oneteam_dev.akka_http_og_fetcher.ErrorTest"
   * }}}
   */
 // scalastyle:off magic.number

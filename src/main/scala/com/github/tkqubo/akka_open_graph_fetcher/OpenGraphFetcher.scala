@@ -1,4 +1,4 @@
-package com.github.tyru.akka_open_graph_fetcher
+package com.github.oneteam_dev.akka_open_graph_fetcher
 
 import java.net.{URI, URISyntaxException}
 
@@ -9,8 +9,8 @@ import akka.http.scaladsl.settings.ConnectionPoolSettings
 import akka.http.scaladsl.{Http, HttpExt}
 import akka.pattern.after
 import akka.stream.ActorMaterializer
-import com.github.tyru.akka_open_graph_fetcher
-import com.github.tyru.akka_open_graph_fetcher.OpenGraphFetcher._
+import com.github.oneteam_dev.akka_open_graph_fetcher
+import com.github.oneteam_dev.akka_open_graph_fetcher.OpenGraphFetcher._
 
 import scala.concurrent.duration._
 import scala.concurrent.{ExecutionContext, Future, TimeoutException}

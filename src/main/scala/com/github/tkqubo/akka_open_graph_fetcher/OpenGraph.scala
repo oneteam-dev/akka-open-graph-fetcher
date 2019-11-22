@@ -1,4 +1,4 @@
-package com.github.tyru.akka_open_graph_fetcher
+package com.github.oneteam_dev.akka_open_graph_fetcher
 
 import spray.json.DefaultJsonProtocol._
 import spray.json._
