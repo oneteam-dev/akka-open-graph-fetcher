@@ -1,4 +1,4 @@
-package com.github.tkqubo.akka_open_graph_fetcher
+package com.github.oneteam_dev.akka_open_graph_fetcher
 
 import java.nio.charset.Charset
 
@@ -23,7 +23,7 @@ import scalaz.syntax.std.all._
 /**
   * Test class for [[OpenGraphParser]]
   * {{{
-  * sbt "test-only com.github.tkqubo.akka_open_graph_fetcher.OpenGraphParserTest"
+  * sbt "test-only com.github.oneteam_dev.akka_open_graph_fetcher.OpenGraphParserTest"
   * }}}
   */
 // scalastyle:off magic.number

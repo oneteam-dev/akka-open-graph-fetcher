@@ -1,4 +1,4 @@
-package com.github.tkqubo.akka_open_graph_fetcher
+package com.github.oneteam_dev.akka_open_graph_fetcher
 
 import org.specs2.mutable.Specification
 import spray.json.DefaultJsonProtocol._
@@ -7,7 +7,7 @@ import spray.json._
 /**
   * Test class for [[OpenGraph]]
   * {{{
-  * sbt "test-only com.github.tkqubo.akka_http_og_fetcher.OpenGraphTest"
+  * sbt "test-only com.github.oneteam_dev.akka_http_og_fetcher.OpenGraphTest"
   * }}}
   */
 // scalastyle:off magic.number
